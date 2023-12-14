@@ -1,27 +1,58 @@
-# SpotifyClone
+# Spotify Clone
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.7.
+- [Sobre o projeto](#sobre-o-projeto)
+- [Demonstração](#demonstração)
+- [Tecnologias utilizadas](#tecnologias-utilizadas)
+- [Executando o projeto](#executando-o-projeto)
+- [Créditos](#créditos)
+- [Conheça meu trabalho](#conheça-meu-trabalho)
+- [Licença](#licença)
 
-## Development server
+## Sobre o projeto
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Demonstração
 
-## Code scaffolding
+## Tecnologias utilizadas
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+O projeto foi construido utilizando somente o Angular, Angular CLI e SCSS. Além da lib [spotify-web-api-js](https://www.npmjs.com/package/spotify-web-api-js)
 
-## Build
+## Executando o projeto
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Para começar, faça download ou clone o repositório
 
-## Running unit tests
+```bash
+git clone https://github.com/fabricio-ap/spotify-clone.git
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Entre na pasta
 
-## Running end-to-end tests
+```bash
+cd spotify-clone
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Instale as dependencias, use npm ou yarn, o que quiser :)
 
-## Further help
+```bash
+npm install
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Rode a aplicação
+
+```bash
+npm start
+```
+
+## Créditos
+
+- [Playlist de aulas do Cristian Willian no Youtube](https://www.youtube.com/playlist?list=PLMFE0Mu3BVy63bmSR92QbTR_rU576VOxg)
+- [Icones do design system](<https://www.figma.com/file/EOUFX0fkCXarcFyduyH9xt/Spotify-Mobile-%E2%80%A2-Free-Icon-set-(Community)?node-id=64%3A169&mode=dev>)
+
+## Conheça meu trabalho
+
+[![Github Badge](https://img.shields.io/badge/-Github-000?style=for-the-badge&logo=Github&logoColor=white&link=https://github.com/fabricio-ap/)](https://github.com/fabricio-ap/)
+[![LinkedIn Badge](https://img.shields.io/badge/-LinkedIn-0A66C2?logo=linkedin&logoColor=white&style=for-the-badge&link=https://www.linkedin.com/in/fabricioapereira/)](https://www.linkedin.com/in/fabricioapereira/)
+[![Gmail Badge](https://img.shields.io/badge/-Gmail-FF0000?style=for-the-badge&labelColor=FF0000&logo=gmail&logoColor=white&link=mailto:<fabricioaraujo051@gmail.com>)](mailto:<fabricioaraujo051@gmail.com>)
+
+## Licença
+
+MIT license @ [Fabrício Araújo](https://github.com/fabricio-ap)
