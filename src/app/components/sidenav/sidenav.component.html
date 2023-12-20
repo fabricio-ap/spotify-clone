@@ -1,0 +1,38 @@
+<nav class="sidenav">
+  <div class="sidenav__container">
+    <ul class="menu">
+      <li class="menu__item" *ngFor="let item of menu">
+        <a
+          class="menu__link"
+          routerLink="{{ item.path }}"
+          routerLinkActive="menu__link--active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <mat-icon svgIcon="{{ item.icon }}" aria-hidden="false"></mat-icon>
+          <span>{{ item.label }}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="sidenav__container library">
+    <div class="library__header">
+      <mat-icon svgIcon="library" aria-hidden="false" aria-label="Library" />
+      <h4 class="library__title">Sua Biblioteca</h4>
+    </div>
+
+    <div class="library__playlist">
+      <ul class="library__list">
+        <li class="library__item" *ngFor="let playlist of playlists">
+          <a routerLink="/player/playlist">
+            <app-spotify-item
+              [name]="playlist.name"
+              [description]="playlist.owner"
+              [image]="playlist.image"
+            />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

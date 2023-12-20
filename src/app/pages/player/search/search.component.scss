@@ -1,0 +1,16 @@
+:host {
+  display: block;
+  width: 100%;
+  height: calc(100% - 64px);
+
+  .search {
+    padding: 0 24px 16px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    &__input--icon {
+      width: 16px;
+    }
+  }
+}

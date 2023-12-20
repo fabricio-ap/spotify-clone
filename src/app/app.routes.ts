@@ -3,11 +3,11 @@ import { authGuard } from './guards/auth.guard';
 
 // loadChildren: semelhante ao lazy import do React, ele importa sob demanda do usuário
 
-// Primeiro item do array faz um redirect inicial para login
+// Primeiro item do array faz um redirect inicial
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'player',
     pathMatch: 'full',
   },
   {

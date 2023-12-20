@@ -4,5 +4,8 @@
     <h2 class="login__title">Spotify</h2>
   </div>
 
-  <button class="login__button" (click)="handleLogin()">Entrar</button>
+  <!-- <button class="login__button" (click)="handleLogin()">Entrar</button> -->
+  <app-button [type]="'primary'" [align]="'center'" (onClick)="handleLogin()">
+    Entrar
+  </app-button>
 </div>

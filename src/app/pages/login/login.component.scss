@@ -1,4 +1,4 @@
-@import "variables.scss";
+@import "variables";
 
 :host {
   width: 100vw;
@@ -31,25 +31,6 @@
       color: $text-hover;
       font-size: 2rem;
       font-weight: 700;
-    }
-
-    &__button {
-      cursor: pointer;
-      min-width: 200px;
-      padding: 8px;
-      border: none;
-      border-radius: 500px;
-      background: $primary;
-
-      font-size: 1rem;
-      font-weight: 700;
-
-      transform: scale(1, 1);
-      transition: transform 50ms ease-in;
-
-      &:hover {
-        transform: scale(1.02, 1.02);
-      }
     }
   }
 }

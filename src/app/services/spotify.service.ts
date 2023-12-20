@@ -1,6 +1,16 @@
 import { Injectable } from '@angular/core';
 import Spotify from 'spotify-web-api-js';
 import { SpotifyConfig } from '../../environments/environment';
+import {
+  buildSpotifyArtist,
+  buildSpotifyFavoriteTrack,
+  buildSpotifyPlaylist,
+  buildSpotifyUser,
+  formatLoginParams,
+} from '../common/spotifyHelpers';
+import { IArtist } from '../interfaces/artists';
+import { IPlaylist } from '../interfaces/playlist';
+import { ITrack } from '../interfaces/tracks';
 import { IUser } from '../interfaces/user';
 
 // O Angular usa o Singleton como recurso para suas classes, ou seja, ele usa sempre a mesma instância todas as vezes que chama uma classe
@@ -16,12 +26,9 @@ export class SpotifyService {
     this.spotifyApi = new Spotify();
   }
 
-  getUrlLogin() {
-    const authEndpoint = `${SpotifyConfig.authEndpoint}?`;
-    const clientId = `client_id=${SpotifyConfig.clientId}&`;
-    const redirectUrl = `redirect_uri=${SpotifyConfig.redirectUrl}&`;
-    const scopes = `scope=${SpotifyConfig.scopes.join('%20')}&`;
-    const responseType = `response_type=token&show_dialog=true`;
+  getLoginUrl() {
+    const { authEndpoint, clientId, redirectUrl, scopes, responseType } =
+      formatLoginParams(SpotifyConfig);
 
     return authEndpoint + clientId + redirectUrl + scopes + responseType;
   }
@@ -37,29 +44,42 @@ export class SpotifyService {
     localStorage.setItem('access_token', token);
   }
 
-  async inicializarUsuario() {
+  async initUser() {
     if (!!this.user) return true;
 
-    const token = localStorage.getItem('token');
-
+    const token = localStorage.getItem('access_token');
     if (!token) return false;
 
     try {
       this.setAccessToken(token);
       await this.getSpotifyUser();
-      return !!this.user;
-    } catch (e) {
+      return true;
+    } catch (error) {
+      console.error(error);
       return false;
     }
   }
 
   async getSpotifyUser() {
     const _user = await this.spotifyApi.getMe();
+    this.user = buildSpotifyUser(_user);
+  }
 
-    this.user = {
-      id: _user.id,
-      nome: _user.display_name,
-      imagemUrl: _user.images.pop().url,
-    };
+  async getSpotifyUserPlaylist(): Promise<IPlaylist[]> {
+    const data = await this.spotifyApi.getUserPlaylists(this.user.id);
+    return data.items.map((playlist) => buildSpotifyPlaylist(playlist));
+  }
+
+  async getMySpotifyTopArtist(limit = 1): Promise<IArtist> {
+    const data = await this.spotifyApi.getMyTopArtists({ limit });
+    return buildSpotifyArtist(data.items[0]);
+  }
+
+  async getMyFavoriteTracks(): Promise<ITrack[]> {
+    const data = await this.spotifyApi.getMySavedTracks();
+    console.log({ data });
+    return data.items.map((track, index) =>
+      buildSpotifyFavoriteTrack(track, index)
+    );
   }
 }

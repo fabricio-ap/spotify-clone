@@ -1,1 +1,36 @@
-<p>home works!</p>
+<div class="home">
+  <section class="home__section">
+    <h4 class="home__info title">Seu artista preferido!</h4>
+    <app-card
+      [title]="artist.name"
+      [img]="artist.image"
+      [description]="artist.genre"
+      [direction]="'horizontal'"
+    >
+      <app-button
+        style="align-self: flex-end"
+        [type]="'primary'"
+        [align]="'center'"
+      >
+        Ver artista
+      </app-button>
+    </app-card>
+  </section>
+
+  <section class="home__section">
+    <h4 class="title">Músicas curtidas</h4>
+
+    <div class="test-table" *ngFor="let track of favorite">
+      <div class="">
+        <app-spotify-item
+          [name]="track.name"
+          [description]="track.artists"
+          [image]="track.image"
+        />
+      </div>
+      <div class="">
+        {{ track.duration }}
+      </div>
+    </div>
+  </section>
+</div>

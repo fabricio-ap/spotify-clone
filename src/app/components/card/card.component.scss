@@ -1,0 +1,72 @@
+@import "variables";
+
+:host {
+  display: block;
+  width: 100%;
+
+  .card {
+    width: 100%;
+    height: 100%;
+    padding: 16px;
+    flex: 1;
+    border-radius: 8px;
+    background: $on-background;
+
+    &__container {
+      height: 100%;
+      display: flex;
+      gap: 16px;
+
+      &--vertical {
+        flex-direction: column;
+      }
+
+      &--horizontal {
+        flex-direction: row;
+      }
+    }
+
+    &__img {
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+
+      & > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &__info {
+      flex: 1;
+      display: grid;
+    }
+
+    &__text {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &__title {
+      color: $text-hover;
+      font-size: 1rem;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    // &__description {
+    //   font-size: 0.8rem;
+    //   line-height: 1.2rem;
+    //   font-weight: 500;
+    //   overflow: hidden;
+    //   text-overflow: ellipsis;
+    //   display: -webkit-box;
+    //   -webkit-line-clamp: 2;
+    //   -webkit-box-orient: vertical;
+    // }
+  }
+}

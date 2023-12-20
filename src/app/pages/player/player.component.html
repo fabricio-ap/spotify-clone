@@ -1,5 +1,10 @@
-<ul>
-  <li><a routerLink="/player">Inicio</a></li>
-  <li><a routerLink="/player/search">Buscar</a></li>
-</ul>
-<router-outlet></router-outlet>
+<div class="player">
+  <div class="player__nav">
+    <app-sidenav></app-sidenav>
+  </div>
+
+  <div class="player__main">
+    <app-header></app-header>
+    <router-outlet></router-outlet>
+  </div>
+</div>
