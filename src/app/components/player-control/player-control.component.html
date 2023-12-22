@@ -1,0 +1,29 @@
+<div class="control">
+  <div class="control__item">
+    <app-spotify-item
+      [name]="currentTrack.name"
+      [description]="currentTrack.artists"
+      [image]="currentTrack.image"
+    />
+  </div>
+  <div class="control__item control__item--end control__group">
+    <app-button>
+      <mat-icon class="control__icon" svgIcon="previous" aria-hidden="false" />
+    </app-button>
+    <app-button [type]="'primary'">
+      <mat-icon
+        *ngIf="!currentTrack.isPlaying; else elseBlock"
+        class="control__icon"
+        style="position: relative; left: 1px"
+        svgIcon="play"
+        aria-hidden="false"
+      />
+      <ng-template #elseBlock>
+        <mat-icon class="control__icon" svgIcon="pause" aria-hidden="false" />
+      </ng-template>
+    </app-button>
+    <app-button>
+      <mat-icon class="control__icon" svgIcon="next" aria-hidden="false" />
+    </app-button>
+  </div>
+</div>

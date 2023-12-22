@@ -15,7 +15,7 @@
     grid-template-areas:
       "nav main main"
       "nav main main"
-      "nav main main";
+      "player player player";
     grid-template-columns: auto 1fr;
     grid-template-rows: 1fr auto;
     gap: 8px;
@@ -30,6 +30,11 @@
       border-radius: 8px;
       overflow: auto;
       position: relative;
+    }
+
+    &__control {
+      grid-area: player;
+      height: 72px;
     }
   }
 }

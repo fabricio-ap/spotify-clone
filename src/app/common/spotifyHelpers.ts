@@ -44,20 +44,38 @@ export const buildSpotifyArtist = (
 });
 
 export const buildSpotifyFavoriteTrack = (
-  track: SpotifyApi.SavedTrackObject,
+  { track }: SpotifyApi.SavedTrackObject,
   index: number
 ): ITrack => {
-  const _duration = new Date(track.track.duration_ms);
+  const _duration = new Date(track.duration_ms);
 
   const minutes = _duration.getMinutes();
   const seconds = _duration.getSeconds();
 
   return {
-    id: track.track.id,
+    id: track.id,
     index: index + 1,
-    name: track.track.name,
-    artists: track.track.artists.map((artist) => artist.name).join(', '),
+    name: track.name,
+    artists: track.artists.map((artist) => artist.name).join(', '),
     duration: `${minutes}:${seconds < 10 ? `${0}${seconds}` : seconds}`,
-    image: track.track.album.images.pop().url,
+    image: track.album.images.pop().url,
+  };
+};
+
+export const buildSpotifyCurrentTrack = (
+  track: SpotifyApi.CurrentlyPlayingResponse
+) => {
+  const _duration = new Date(track.item.duration_ms);
+
+  const minutes = _duration.getMinutes();
+  const seconds = _duration.getSeconds();
+
+  return {
+    id: track.item.id,
+    name: track.item.name,
+    artists: track.item.artists.map((artist) => artist.name).join(', '),
+    duration: `${minutes}:${seconds < 10 ? `${0}${seconds}` : seconds}`,
+    image: track.item.album.images.pop().url,
+    isPlaying: track.is_playing,
   };
 };

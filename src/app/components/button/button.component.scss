@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 12px;
+  padding: 8px;
   border: none;
   border-radius: 500px;
 
@@ -15,20 +15,12 @@
   font-size: 0.9rem;
   font-weight: 700;
 
-  transform: scale(1, 1);
-  transition: transform 50ms ease-in;
-
   &--primary {
     background: $primary;
     color: $on-primary;
   }
 
   &--center {
-    min-width: 200px;
     justify-content: center;
-  }
-
-  &:hover {
-    transform: scale(1.02, 1.02);
   }
 }

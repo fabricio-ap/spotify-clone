@@ -20,17 +20,33 @@
   <section class="home__section">
     <h4 class="title">Músicas curtidas</h4>
 
-    <div class="test-table" *ngFor="let track of favorite">
-      <div class="">
-        <app-spotify-item
-          [name]="track.name"
-          [description]="track.artists"
-          [image]="track.image"
-        />
-      </div>
-      <div class="">
-        {{ track.duration }}
-      </div>
-    </div>
+    <ol class="home__favorite table">
+      <li class="table__header table__row">
+        <div class="table__cell" data-name="#">#</div>
+        <div class="table__cell">Título</div>
+        <div class="table__cell table__cell--center">
+          <mat-icon
+            class="table__icon"
+            svgIcon="duration"
+            aria-hidden="false"
+            aria-label="Library"
+          />
+        </div>
+      </li>
+
+      <li class="table__body table__row" *ngFor="let track of favorite">
+        <div class="table__cell">{{ track.index }}</div>
+        <div class="table__cell">
+          <app-spotify-item
+            [name]="track.name"
+            [description]="track.artists"
+            [image]="track.image"
+          />
+        </div>
+        <div class="table__cell table__cell--center">
+          {{ track.duration }}
+        </div>
+      </li>
+    </ol>
   </section>
 </div>

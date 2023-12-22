@@ -3,6 +3,7 @@ import Spotify from 'spotify-web-api-js';
 import { SpotifyConfig } from '../../environments/environment';
 import {
   buildSpotifyArtist,
+  buildSpotifyCurrentTrack,
   buildSpotifyFavoriteTrack,
   buildSpotifyPlaylist,
   buildSpotifyUser,
@@ -77,9 +78,15 @@ export class SpotifyService {
 
   async getMyFavoriteTracks(): Promise<ITrack[]> {
     const data = await this.spotifyApi.getMySavedTracks();
-    console.log({ data });
+
     return data.items.map((track, index) =>
       buildSpotifyFavoriteTrack(track, index)
     );
+  }
+
+  async getMyCurrentTrack(): Promise<ITrack> {
+    const data = await this.spotifyApi.getMyCurrentPlayingTrack();
+
+    return buildSpotifyCurrentTrack(data);
   }
 }
